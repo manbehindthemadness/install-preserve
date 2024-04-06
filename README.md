@@ -32,13 +32,13 @@ requirements = [
     'packaging',
     'wldhx.yadisk-direct',
     'opencv-python',
-    'pytorch==2.0.0'
+    'torch==2.0.0'
 ]
 
 excludes = [
     'tqdm',
     'opencv-python:cv2',  # Note the colon delimited statement to illustrate <package-name>:<import alias>
-    'pytorch:torch'
+    'torch'
 ]
 requirements = preserve(requirements, excludes, verbose=True)
 

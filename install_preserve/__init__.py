@@ -46,13 +46,13 @@ def test():
         'packaging',
         'wldhx.yadisk-direct',
         'opencv-python>=3.4.2.17',
-        'pytorch>=2.0.0'
+        'torch>=2.0.0'
     ]
 
     excludes = [
         'tqdm',
         'opencv-python:cv2',
-        'pytorch:torch'
+        'torch'
     ]
     requirements = preserve(requirements, excludes, verbose=True)
     for requirement in requirements:
