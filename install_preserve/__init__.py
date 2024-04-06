@@ -1,7 +1,8 @@
 """
 Lets init some stuff!
 """
-import importlib.util  # noqa
+import re
+import importlib.util
 
 
 def preserve(requirements: list[str], criteria: list[str], verbose: bool = False) -> list:
@@ -10,7 +11,7 @@ def preserve(requirements: list[str], criteria: list[str], verbose: bool = False
     """
     package_names = list()
     for requirement in requirements:
-        package_names.append(requirement.split('=')[0])
+        package_names.append(re.sub(r'[^a-zA-Z0-9]+$', '', requirement.split('=')[0]))
     for item in criteria:
         alias = name = item
         if ':' in item:
@@ -44,8 +45,8 @@ def test():
         'webdataset',
         'packaging',
         'wldhx.yadisk-direct',
-        'opencv-python',
-        'pytorch==2.0.0'
+        'opencv-python>=3.4.2.17',
+        'pytorch>=2.0.0'
     ]
 
     excludes = [
