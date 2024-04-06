@@ -2,6 +2,7 @@
 Lets init some stuff!
 """
 import re
+import logging
 import importlib.util
 
 
@@ -18,7 +19,7 @@ def preserve(requirements: list[str], criteria: list[str], verbose: bool = False
             name, alias = item.split(':')
         if importlib.util.find_spec(alias) is not None:
             if verbose:
-                print(f'excluding package {name} as it is already installed')
+                logging.info(f'excluding package {name} as it is already installed')
             index = package_names.index(name)
             package_names.pop(index)
             requirements.pop(index)
