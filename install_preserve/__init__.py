@@ -11,11 +11,16 @@ def preserve(requirements: list[str], criteria: list[str], verbose: bool = False
     Preserve packages listed in the criteria argument if they are already installed.
     """
     package_names = list()
-    for requirement in requirements:
-        package_names.append(re.sub(r'[^a-zA-Z0-9]+$', '', requirement.split('=')[0]))
+    for idx, requirement in enumerate(requirements):
+        if '@' in requirement:
+            package_names.append(requirement.split('@')[0].strip())
+        else:
+            package_names.append(re.sub(r'[^a-zA-Z0-9]+$', '', requirement.split('=')[0]))
+
     for item in criteria:
         alias = name = item
         if ':' in item:
+
             name, alias = item.split(':')
         if importlib.util.find_spec(alias) is not None:
             if verbose:
