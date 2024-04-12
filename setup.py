@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='install-preserve',
-    version='0.0.3',
+    version='0.1.0',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
